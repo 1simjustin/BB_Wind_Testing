@@ -39,11 +39,15 @@ sudo udevadm trigger
 
 ### Python Setup
 
-This code uses the [PySerial](https://pypi.org/project/pyserial/) library. Install it using
+If you do not yet have it installed, install Python using the following command.
+```
+sudo apt install python3.10
+```
+
+This code uses the [PySerial](https://pypi.org/project/pyserial/) library. Install it using the following.
 ```
 sudo pip3 install pyserial
 ```
-prior to following steps.
 
 ### ROS2 Setup
 
@@ -57,6 +61,7 @@ source /opt/ros/humble/setup.bash
 source install/setup.bash
 ros2 run wind_pub wind
 ```
+Depending on the distro used, you might need to change `humble` out for your distro.
 
 You may run into issues along the lines of `port access permission denied`. In that case, you can opt to run the following commands to enable access to serial ports, then reboot the computer.
 ```
