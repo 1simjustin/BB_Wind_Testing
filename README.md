@@ -63,7 +63,7 @@ ros2 run wind_pub wind
 ```
 Depending on the distro used, you might need to change `humble` out for your distro.
 
-You may run into issues along the lines of `port access permission denied`. In that case, you can opt to run the following commands to enable access to serial ports, then reboot the computer.
+You may run into issues along the lines of `port access permission denied`. In that case, you can opt to run the following commands to enable access to serial ports, then reboot the computer for the command to take effect. This gives read and write permissions to all /dev ports for the user.
 ```
 sudo adduser <username> dialout
 ```
