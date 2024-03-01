@@ -39,6 +39,11 @@ sudo udevadm trigger
 
 ### Python Setup
 
+If you do not yet have it installed, install Python using the following command.
+```
+sudo apt install python3.10
+```
+
 This code uses the [PySerial](https://pypi.org/project/pyserial/) library. Install it using the following.
 ```
 sudo pip3 install pyserial
