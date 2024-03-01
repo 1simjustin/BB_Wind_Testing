@@ -39,11 +39,10 @@ sudo udevadm trigger
 
 ### Python Setup
 
-This code uses the [PySerial](https://pypi.org/project/pyserial/) library. Install it using
+This code uses the [PySerial](https://pypi.org/project/pyserial/) library. Install it using the following.
 ```
 sudo pip3 install pyserial
 ```
-prior to following steps.
 
 ### ROS2 Setup
 
@@ -57,3 +56,4 @@ source /opt/ros/humble/setup.bash
 source install/setup.bash
 ros2 run wind_pub wind
 ```
+Depending on the distro used, you might need to change `humble` out for your distro.
