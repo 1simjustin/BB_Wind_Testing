@@ -16,7 +16,9 @@ This repository consists of test code for interfacing with the GILL wind sensor,
 | 7          |E       |Green White   |RXD      |RS232 Pin3  |
 | 8          |-       |-             |-        |-           |
 | 9          |-       |-             |-        |-           |
+
 Pins numbers are in reference to the 9-pin connector leading out of the wind sensor, in accordance to the datasheet which can be found [here](https://observator.com/wp-content/uploads/2019/07/1405-PS-0019-WindSonic-GPA-manual-issue-29.pdf). Pinout are with reference to the pins leading out towards the 6-pin connector on the side of the ASV.
+
 Certain pins are not used.
 
 ## Setup
