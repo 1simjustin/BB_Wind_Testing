@@ -36,3 +36,13 @@ The rule will automatically activate upon boot up in the future.
 ```
 sudo udevadm trigger
 ```
+
+### Python Setup
+
+This code uses the [PySerial](https://pypi.org/project/pyserial/) library. Install it using
+```
+sudo pip3 install pyserial
+```
+prior to following steps.
+
+### ROS2 Setup
