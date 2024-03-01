@@ -46,3 +46,14 @@ sudo pip3 install pyserial
 prior to following steps.
 
 ### ROS2 Setup
+
+Setup ROS2 as per instructions [here](https://docs.ros.org/en/humble/Installation.html). Depending on the version of Ubuntu being used, a different distro might have to be installed instead.
+
+## Usage
+
+The program can be run with the following commands from within `ros2_ws`:
+```
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+ros2 run wind_pub wind
+```
