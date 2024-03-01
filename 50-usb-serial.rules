@@ -1,4 +1,4 @@
 # Place this rule file in /etc/udev/rules.d/
 
 # Below command is for interfacing with the wind sensor using RS232 over the FTDI RS232-USB converter
-SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", SYMLINK+="FTDI_WIND"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", SYMLINK+="FTDI_WIND", MODE="0666"

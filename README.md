@@ -57,3 +57,8 @@ source /opt/ros/humble/setup.bash
 source install/setup.bash
 ros2 run wind_pub wind
 ```
+
+You may run into issues along the lines of `port access permission denied`. In that case, you can opt to run the following commands to enable access to serial ports, then reboot the computer.
+```
+sudo adduser <username> dialout
+```
