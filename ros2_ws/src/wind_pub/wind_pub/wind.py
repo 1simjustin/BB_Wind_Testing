@@ -16,7 +16,7 @@ class WindPubNode(Node):
         self.node_namespace = "wind/"
 
         # Init serial handler
-        self.ser = serial.Serial("/dev/FTDI_WIND", baudrate=9600)
+        self.ser = serial.Serial("/dev/FTDI_WIND", baudrate=38400)
         self.curr_string = ""
         self.ongoing_string = False
 
