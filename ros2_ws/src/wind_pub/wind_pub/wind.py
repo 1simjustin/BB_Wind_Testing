@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String, Int32, Float32
+from std_msgs.msg import String, Float32
 import serial
 
 """
@@ -26,9 +26,9 @@ class WindPubNode(Node):
         self.speed_window = []
 
         # Create publishers
-        self.wind_dir_pub = self.create_publisher(Int32, self.node_namespace + "dir", 10)
+        self.wind_dir_pub = self.create_publisher(Float32, self.node_namespace + "dir", 10)
         self.wind_speed_pub = self.create_publisher(Float32, self.node_namespace + "speed", 10)
-        self.wind_status_pub = self.create_publisher(Int32, self.node_namespace + "status", 10)
+        self.wind_status_pub = self.create_publisher(String, self.node_namespace + "status", 10)
 
         # Create timer
         self.timer = self.create_timer(0.1, self.timer_callback)
@@ -60,6 +60,8 @@ class WindPubNode(Node):
         if status == "00":
             self.update_window(dir, speed)
             self.publish_wind_data()
+        
+        self.wind_status_pub.publish(String(data=status))
 
     def update_window(self, dir, speed):
         # Direction moving window
@@ -77,15 +79,13 @@ class WindPubNode(Node):
             self.speed_window.append(speed)        
 
     def publish_wind_data(self):
-        if len(self.dir_window != 0):
+        if len(self.dir_window) != 0:
             dir_avg = sum(self.dir_window) / len(self.dir_window)
-            dir_data = Int32(data=dir_avg)
-            self.wind_dir_pub.publish(dir_data)
+            self.wind_dir_pub.publish(Float32(data=dir_avg))
         
-        if len(self.speed_window != 0):
+        if len(self.speed_window) != 0:
             speed_avg = sum(self.speed_window) / len(self.speed_window)
-            speed_data = Float32(data=speed_avg)
-            self.wind_speed_pub.publish(speed_data)
+            self.wind_speed_pub.publish(Float32(data=speed_avg))
 
 def main(args=None):
     rclpy.init(args=args)
