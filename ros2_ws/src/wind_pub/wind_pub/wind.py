@@ -20,6 +20,11 @@ class WindPubNode(Node):
         self.curr_string = ""
         self.ongoing_string = False
 
+        # Init moving window
+        self.window_size = 4
+        self.dir_window = []
+        self.speed_window = []
+
         # Create publishers
         self.wind_dir_pub = self.create_publisher(Int32, self.node_namespace + "dir", 10)
         self.wind_speed_pub = self.create_publisher(Float32, self.node_namespace + "speed", 10)
@@ -53,13 +58,34 @@ class WindPubNode(Node):
 
         # Checksum
         if status == "00":
-            self.publish_wind_data(dir, speed)
+            self.update_window(dir, speed)
+            self.publish_wind_data()
 
-    def publish_wind_data(self, dir, speed):
-        if dir is not None:
-            self.wind_dir_pub.publish(Int32(data=dir))
-        if speed is not None:
-            self.wind_speed_pub.publish(Float32(data=speed))
+    def update_window(self, dir, speed):
+        # Direction moving window
+        if len(self.dir_window) < self.window_size:
+            self.dir_window.append(dir)
+        else:
+            self.dir_window.pop(0)
+            self.dir_window.append(dir)
+        
+        # Speed moving window
+        if len(self.speed_window) < self.window_size:
+            self.speed_window.append(speed)
+        else:
+            self.speed_window.pop(0)
+            self.speed_window.append(speed)        
+
+    def publish_wind_data(self):
+        if len(self.dir_window != 0):
+            dir_avg = sum(self.dir_window) / len(self.dir_window)
+            dir_data = Int32(data=dir_avg)
+            self.wind_dir_pub.publish(dir_data)
+        
+        if len(self.speed_window != 0):
+            speed_avg = sum(self.speed_window) / len(self.speed_window)
+            speed_data = Float32(data=speed_avg)
+            self.wind_speed_pub.publish(speed_data)
 
 def main(args=None):
     rclpy.init(args=args)
