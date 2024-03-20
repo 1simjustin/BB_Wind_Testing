@@ -9,7 +9,7 @@ dir_window = []
 speed_window = []
 window_size = 4
 
-def parse_message(self, message):
+def parse_message(message):
     dir = int(message[1]) if message[1] != '' else None
     speed = float(message[2]) if message[2] != '' else None
     status = message[4]
@@ -19,7 +19,7 @@ def parse_message(self, message):
         update_window(dir, speed)
         publish_wind_data()
 
-def publish_wind_data(self):
+def publish_wind_data():
     if len(dir_window) != 0:
         dir_avg = sum(dir_window) / len(dir_window)
         print(dir_avg)
@@ -28,7 +28,7 @@ def publish_wind_data(self):
         speed_avg = sum(speed_window) / len(speed_window)
         print(speed_avg)
 
-def update_window(self, dir, speed):
+def update_window(dir, speed):
     # Direction moving window
     if len(dir_window) < window_size:
         dir_window.append(dir)
@@ -43,7 +43,7 @@ def update_window(self, dir, speed):
         speed_window.pop(0)
         speed_window.append(speed)
 
-def main(args=None):
+def main():
     ser = serial.Serial("/dev/FTDI_WIND", baudrate=38400)
     curr_string = ""
     ongoing_string = False
