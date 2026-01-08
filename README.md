@@ -23,7 +23,7 @@ Certain pins are not used.
 
 The RS232 connection (and power connection) should look like this.
 
-[](RS232_Pic.jpeg)
+![](RS232_Pic.jpeg)
 
 ## Setup
 
