@@ -21,6 +21,10 @@ Pins numbers are in reference to the 9-pin connector leading out of the wind sen
 
 Certain pins are not used.
 
+The RS232 connection (and power connection) should look like this.
+
+[](RS232_Pic.jpeg)
+
 ## Setup
 
 ### USB Rules
